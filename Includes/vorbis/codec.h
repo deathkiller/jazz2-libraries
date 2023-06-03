@@ -22,6 +22,17 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+#if !defined(__HAS_LOCAL_OGG) && defined(__has_include)
+#	if __has_include("../ogg/ogg.h")
+#		define __HAS_LOCAL_OGG
+#	endif
+#endif
+#if defined(__HAS_LOCAL_OGG)
+#	include "../ogg/ogg.h"
+#else
+#	include <ogg/ogg.h>
+#endif
+
 typedef struct vorbis_info{
   int version;
   int channels;
